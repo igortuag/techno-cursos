@@ -1,12 +1,23 @@
 <template>
   <div>
-    <h1>Cursos</h1>
+    <div v-if="loading">
+      <p>Carregando...</p>
+    </div>
+    <div v-else>
+      <h1>Cursos</h1>
+      <p>{{ api }}</p>
+    </div>
   </div>
 </template>
 
 <script>
+import fetchData from "@/mixins/fetchData.js";
+
 export default {
   name: "Cursos",
-  components: {}
+  mixins: [fetchData],
+  created() {
+    this.fetchData("cursos");
+  }
 };
 </script>
