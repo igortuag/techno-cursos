@@ -3,10 +3,12 @@
     <div v-if="loading">
       <PageLoading />
     </div>
-    <div v-else>
-      <h1>Home</h1>
-      <p>{{ api }}</p>
-    </div>
+    <transition>
+      <div v-if="api">
+        <h1>Home</h1>
+        <p>{{ api }}</p>
+      </div>
+    </transition>
   </div>
 </template>
 
